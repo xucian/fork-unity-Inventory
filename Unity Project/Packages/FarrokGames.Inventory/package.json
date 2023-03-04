@@ -1,8 +1,8 @@
 {
     "name": "com.farrokhgames.inventory",
     "version": "1.0.0",
-    "displayName": "Inventory",
-    "description": "A Diablo 2-style inventory system for Unity3D",
+    "displayName": "Farrok Inventory",
+    "description": "A Diablo 2-style inventory system for Unity3D, modified by xucian",
     "unity": "2019.3",
     "unityRelease": "0f6",
     "dependencies": {},
@@ -12,7 +12,7 @@
       "rpg"
     ],
     "author": {
-      "name": "FarrokhGames",
+      "name": "FarrokhGames (original author), xucian (modder)",
       "email": "info@farrokhgames.com",
       "url": "https://www.farrokhgames.com"
     }
