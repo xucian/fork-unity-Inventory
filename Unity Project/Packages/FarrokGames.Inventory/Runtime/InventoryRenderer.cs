@@ -256,7 +256,8 @@ namespace FarrokhGames.Inventory
             var img = _imagePool.Take();
             img.gameObject.SetActive(true);
             img.sprite = sprite;
-            img.rectTransform.sizeDelta = new Vector2(img.sprite.rect.width, img.sprite.rect.height);
+            if (sprite)
+                img.rectTransform.sizeDelta = new Vector2(img.sprite.rect.width, img.sprite.rect.height);
             img.transform.SetAsLastSibling();
             img.type = Image.Type.Simple;
             img.raycastTarget = raycastTarget;
