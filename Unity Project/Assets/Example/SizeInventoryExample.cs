@@ -13,6 +13,7 @@ namespace FarrokhGames.Inventory.Examples
         [SerializeField] private ItemType _allowedItem = ItemType.Any;
         [SerializeField] private int _width = 8;
         [SerializeField] private int _height = 4;
+        [Tooltip("Only required if Fill Randomly or Fill Empty is enabled")]
         [SerializeField] private ItemDefinition[] _definitions = null;
         [SerializeField] private bool _fillRandomly = true; // Should the inventory get filled with random items?
         [SerializeField] private bool _fillEmpty = false; // Should the inventory get completely filled?
