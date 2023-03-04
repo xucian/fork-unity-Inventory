@@ -218,6 +218,8 @@ namespace FarrokhGames.Inventory
             {
                 img.rectTransform.localPosition = GetItemOffset(item);
             }
+            
+            CreateItemView(item, img.transform as RectTransform);
 
             _items.Add(item, img);
         }
@@ -231,6 +233,7 @@ namespace FarrokhGames.Inventory
             {
                 var image = _items[item];
                 image.gameObject.SetActive(false);
+                RecycleItemView(item, image.transform as RectTransform);
                 RecycleImage(image);
                 _items.Remove(item);
             }
@@ -260,6 +263,14 @@ namespace FarrokhGames.Inventory
             return img;
         }
 
+        protected virtual void CreateItemView(IInventoryItem item, RectTransform parent)
+        {
+        }
+
+        protected virtual void RecycleItemView(IInventoryItem item, RectTransform parent)
+        {
+        }
+        
         /*
          * Recycles given image 
          */
