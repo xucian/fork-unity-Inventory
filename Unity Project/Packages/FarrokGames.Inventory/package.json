@@ -1,7 +1,7 @@
 {
     "name": "com.farrokhgames.inventory",
     "version": "1.0.0",
-    "displayName": "Farrok Inventory",
+    "displayName": "Farrokh Inventory",
     "description": "A Diablo 2-style inventory system for Unity3D, modified by xucian",
     "unity": "2019.3",
     "unityRelease": "0f6",
