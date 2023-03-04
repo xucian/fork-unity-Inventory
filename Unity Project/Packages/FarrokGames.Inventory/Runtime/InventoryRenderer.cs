@@ -34,7 +34,7 @@ namespace FarrokhGames.Inventory
         /*
          * Setup
          */
-        void Awake()
+        protected virtual void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
 
@@ -53,6 +53,14 @@ namespace FarrokhGames.Inventory
                     image.transform.localScale = Vector3.one;
                     return image;
                 });
+        }
+        
+        protected virtual void Start()
+        {
+        }
+        
+        protected virtual void Update()
+        {
         }
 
         /// <summary>
@@ -79,7 +87,7 @@ namespace FarrokhGames.Inventory
         /* 
         Invoked when the inventory inventoryRenderer is enabled
         */
-        void OnEnable()
+        protected virtual void OnEnable()
         {
             if (inventory != null && !_haveListeners)
             {
@@ -103,7 +111,7 @@ namespace FarrokhGames.Inventory
         /* 
         Invoked when the inventory inventoryRenderer is disabled
         */
-        void OnDisable()
+        protected virtual void OnDisable()
         {
             if (inventory != null && _haveListeners)
             {
@@ -119,7 +127,7 @@ namespace FarrokhGames.Inventory
         /*
         Clears and renders the grid. This must be done whenever the size of the inventory changes
         */
-        private void ReRenderGrid()
+        protected virtual void ReRenderGrid()
         {
             // Clear the grid
             if (_grids != null)
@@ -178,7 +186,7 @@ namespace FarrokhGames.Inventory
         /*
         Clears and renders all items
         */
-        private void ReRenderAllItems()
+        protected virtual void ReRenderAllItems()
         {
             // Clear all items
             foreach (var image in _items.Values)
@@ -198,7 +206,7 @@ namespace FarrokhGames.Inventory
         /*
         Handler for when inventory.OnItemAdded is invoked
         */
-        private void HandleItemAdded(IInventoryItem item)
+        protected virtual void HandleItemAdded(IInventoryItem item)
         {
             var img = CreateImage(item.sprite, false);
 
@@ -217,7 +225,7 @@ namespace FarrokhGames.Inventory
         /*
         Handler for when inventory.OnItemRemoved is invoked
         */
-        private void HandleItemRemoved(IInventoryItem item)
+        protected virtual void HandleItemRemoved(IInventoryItem item)
         {
             if (_items.ContainsKey(item))
             {
@@ -231,7 +239,7 @@ namespace FarrokhGames.Inventory
         /*
         Handler for when inventory.OnResized is invoked
         */
-        private void HandleResized()
+        protected virtual void HandleResized()
         {
             ReRenderGrid();
             ReRenderAllItems();
@@ -240,7 +248,7 @@ namespace FarrokhGames.Inventory
         /*
          * Create an image with given sprite and settings
          */
-        private Image CreateImage(Sprite sprite, bool raycastTarget)
+        protected virtual Image CreateImage(Sprite sprite, bool raycastTarget)
         {
             var img = _imagePool.Take();
             img.gameObject.SetActive(true);
@@ -255,7 +263,7 @@ namespace FarrokhGames.Inventory
         /*
          * Recycles given image 
          */
-        private void RecycleImage(Image image)
+        protected virtual void RecycleImage(Image image)
         {
             image.gameObject.name = "Image";
             image.gameObject.SetActive(false);
@@ -268,7 +276,7 @@ namespace FarrokhGames.Inventory
         /// <param name="item">Item to select</param>
         /// <param name="blocked">Should the selection be rendered as blocked</param>
         /// <param name="color">The color of the selection</param>
-        public void SelectItem(IInventoryItem item, bool blocked, Color color)
+        public virtual void SelectItem(IInventoryItem item, bool blocked, Color color)
         {
             if (item == null) { return; }
             ClearSelection();
@@ -303,7 +311,7 @@ namespace FarrokhGames.Inventory
         /// <summary>
         /// Clears all selections made in this inventory
         /// </summary>
-        public void ClearSelection()
+        public virtual void ClearSelection()
         {
             for (var i = 0; i < _grids.Length; i++)
             {
